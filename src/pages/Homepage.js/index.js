@@ -1,22 +1,31 @@
 import React, { useState } from "react";
 import { Container, Form, Col, Button, Row, Image } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
+import { saveEntry } from "../../store/entries/actions";
 import { gifRender } from "../../store/user/actions";
 import { selectGif, selectToken } from "../../store/user/selectors";
 
 export default function Homepage() {
   const [sentiment, setSentiment] = useState("-");
   const token = useSelector(selectToken);
-  console.log("sentiment?", sentiment);
+  // console.log("sentiment?", sentiment);
   const [content, setContent] = useState("");
   const dispatch = useDispatch();
   const showGif = useSelector(selectGif);
+  // console.log(showGif);
 
   function handleSubmit() {
     if (sentiment === "-") alert("Please select an emotion");
     else {
       dispatch(gifRender(sentiment));
       setSentiment("-");
+    }
+  }
+
+  function handleSave(content, gifUrl, userId) {
+    if (content === " ") alert("Please share your feelings");
+    else {
+      dispatch(saveEntry(content, gifUrl, userId));
     }
   }
 
@@ -102,6 +111,15 @@ export default function Homepage() {
           <Button variant="primary" type="submit" onClick={handleSubmit}>
             Give me the GIF!
           </Button>
+          {token ? (
+            <Button
+              variant="primary"
+              type="submit"
+              onClick={() => handleSave(content, showGif)}
+            >
+              Save the GIF!
+            </Button>
+          ) : null}
         </Form.Group>
       </Form>
       <Row

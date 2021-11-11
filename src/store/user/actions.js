@@ -1,6 +1,6 @@
 import { apiUrl } from "../../config/constants";
 import axios from "axios";
-import { selectToken, selectUser } from "./selectors";
+import { selectToken } from "./selectors";
 import {
   appLoading,
   appDoneLoading,
@@ -123,7 +123,7 @@ export const gifRender = (sentiment) => {
       const res = await axios.post(`${apiUrl}/entry/gif`, {
         sentiment,
       });
-      console.log("any response", res.data);
+
       dispatch(gifGetSuccess(res.data));
       dispatch(appDoneLoading());
     } catch (error) {

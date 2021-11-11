@@ -20,7 +20,7 @@ export default function MyMoodPage() {
 
   useEffect(() => {
     dispatch(loadEntries());
-  }, []);
+  }, [dispatch]);
 
   const onDelete = (id) => {
     console.log("deleting mood!", id);

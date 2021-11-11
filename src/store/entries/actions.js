@@ -9,10 +9,18 @@ import {
 
 const API_URL = `http://localhost:4000/entry`;
 
+export const SAVE_ENTRY_SUCCESS = "SAVE_ENTRY_SUCCESS";
 export const DELETE_ENTRY_SUCCESS = "DELETE_ENTRY_SUCCESS";
 export const DELETE_ALL_ENTRIES_SUCCESS = "DELETE_ALL_ENTRIES_SUCCESS";
 export const START_LOADING = "START_LOADING";
 export const ENTRIES_FETCHED = "ENTRIES_FETCHED";
+
+const saveEntrySuccess = (entry) => {
+  return {
+    type: SAVE_ENTRY_SUCCESS,
+    payload: entry,
+  };
+};
 
 const deleteEntrySuccess = (entryId) => {
   return {
@@ -56,6 +64,38 @@ export const loadEntries = () => {
     const loadedEntries = res.data.entries;
 
     dispatch(entriesFetched(loadedEntries));
+  };
+};
+
+export const saveEntry = (content, gifUrl, userId) => {
+  return async (dispatch, getState) => {
+    const token = selectToken(getState());
+    if (token === null) return;
+    dispatch(appLoading());
+    try {
+      // console.log("anything we have here?", content, gifUrl, userId);
+      const res = await axios.post(
+        `${API_URL}`,
+        { content, gifUrl },
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
+      dispatch(saveEntrySuccess(res.data));
+      dispatch(appDoneLoading());
+      dispatch(
+        showMessageWithTimeout("success", false, res.data.message, 1500)
+      );
+    } catch (e) {
+      if (e.response) {
+        console.log(e.response.data.message);
+        dispatch(setMessage("danger", true, e.response.data.message));
+      } else {
+        console.log(e.message);
+        dispatch(setMessage("danger", true, e.message));
+      }
+      dispatch(appDoneLoading());
+    }
   };
 };
 
