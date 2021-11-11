@@ -44,7 +44,7 @@ export default function MyMoodPage() {
             <div className="mood-card" key={entry.id}>
               <Mood mood={entry} />
               <button className="button-32" onClick={() => onDelete(entry.id)}>
-                Delete the mood
+                Delete this mood
               </button>
             </div>
           ))}
