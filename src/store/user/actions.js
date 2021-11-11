@@ -116,22 +116,13 @@ export const getUserWithStoredToken = () => {
   };
 };
 
-export const gifRender = (content) => {
+export const gifRender = (sentiment) => {
   return async (dispatch, getState) => {
-    // const { token } = selectUser(getState());
     dispatch(appLoading());
     try {
-      const res = await axios.post(
-        `${apiUrl}/entry/sentiment`,
-        {
-          content,
-        }
-        // {
-        //   headers: {
-        //     Authorization: `Bearer ${token}`,
-        //   },
-        // }
-      );
+      const res = await axios.post(`${apiUrl}/entry/gif`, {
+        sentiment,
+      });
       console.log("any response", res.data);
       dispatch(gifGetSuccess(res.data));
       dispatch(appDoneLoading());
