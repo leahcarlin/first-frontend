@@ -7,7 +7,7 @@ import Loading from "./components/Loading";
 import MessageBox from "./components/MessageBox";
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
-import MyMoodPage from "./pages/MyMoodPage.js";
+import MyMoodPage from "./pages/MyMoodPage/MyMoodPage";
 
 import { useDispatch, useSelector } from "react-redux";
 import { selectAppLoading } from "./store/appState/selectors";
