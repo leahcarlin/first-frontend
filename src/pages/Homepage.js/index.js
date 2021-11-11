@@ -20,14 +20,14 @@ export default function Homepage() {
     }
   }
 
-  const [happy, setHappy] = useState([
+  const happy = [
     "confident",
     "happy",
     "optimistic",
     "relieved",
     "satisfied",
     "successful",
-  ]);
+  ];
   const sad = ["alone", "anxious", "bored", "depressed", "sad", "pessimistic"];
   const angry = [
     "angry",
