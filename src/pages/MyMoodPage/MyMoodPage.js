@@ -35,7 +35,7 @@ export default function MyMoodPage() {
 
   return (
     <div className="container">
-      <h1>Moods</h1>
+      <h1>My Mood History</h1>
       {loading ? (
         <em>Loading...</em>
       ) : (

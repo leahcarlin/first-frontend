@@ -15,7 +15,13 @@ export default function Navigation() {
 
   return (
     <Navbar bg="light" expand="lg">
-      <Navbar.Brand as={NavLink} to="/">
+      <Navbar.Brand
+        as={NavLink}
+        to="/"
+        style={{
+          fontFamily: "'Mochiy Pop P One', sans-serif",
+        }}
+      >
         GIVE ME THE GIF
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
