@@ -1,8 +1,22 @@
-import React, { useState } from "react";
-import { Container, Form, Col, Button } from "react-bootstrap";
+import React, { useState, useEffect } from "react";
+import { Container, Form, Col, Button, Row, Image } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import { gifRender } from "../../store/user/actions";
+import { selectGif } from "../../store/user/selectors";
 
 export default function Homepage() {
   const [content, setContent] = useState("Today, I'm feeling ");
+  const dispatch = useDispatch();
+  const showGif = useSelector(selectGif);
+
+  useEffect(() => {
+    dispatch(gifRender());
+  }, [dispatch]);
+
+  function handleSubmit() {
+    dispatch(gifRender(content));
+  }
+
   return (
     <Container
       style={{
@@ -32,11 +46,12 @@ export default function Homepage() {
           />
         </Form.Group>
         <Form.Group className="mt-5">
-          <Button variant="primary" type="submit">
+          <Button variant="primary" type="submit" onClick={handleSubmit}>
             Give me the GIF!
           </Button>
         </Form.Group>
       </Form>
+      <Row>{!showGif ? null : <Image src={showGif} />}</Row>
     </Container>
   );
 }
