@@ -93,7 +93,7 @@ export default function Homepage() {
               value={content}
               onChange={(event) => setContent(event.target.value)}
               type="input"
-              placeholder="Why do you feeling this way?"
+              placeholder="Why do you feel this way?"
               required
             />
           ) : null}
