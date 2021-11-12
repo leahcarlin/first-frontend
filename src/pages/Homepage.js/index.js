@@ -134,7 +134,7 @@ export default function Homepage() {
         {!showGif ? null : (
           <Image
             src={showGif}
-            style={{ marginTop: "20px", width: "600px", objectFit: "cover" }}
+            style={{ margin: "20px", width: "600px", objectFit: "cover" }}
           />
         )}
       </Row>
