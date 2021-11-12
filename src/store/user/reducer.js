@@ -3,6 +3,7 @@ import {
   LOGIN_SUCCESS,
   TOKEN_STILL_VALID,
   GIF_GET_SUCCESS,
+  GIF_RESET,
 } from "./actions";
 
 const initialState = {
@@ -27,6 +28,12 @@ export default (state = initialState, action) => {
 
     case GIF_GET_SUCCESS:
       return { ...state, gif: action.payload };
+
+    case GIF_RESET:
+      return {
+        ...state,
+        gif: null,
+      };
 
     default:
       return state;

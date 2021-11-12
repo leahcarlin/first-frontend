@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Container, Form, Col, Button, Row, Image } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { saveEntry } from "../../store/entries/actions";
-import { gifRender } from "../../store/user/actions";
+import { gifRender, gifReset } from "../../store/user/actions";
 import { selectGif, selectToken } from "../../store/user/selectors";
 import "./Homepage.css";
 
@@ -27,6 +27,7 @@ export default function Homepage() {
     if (content === " ") alert("Please share your feelings");
     else {
       dispatch(saveEntry(content, gifUrl, userId));
+      dispatch(gifReset());
     }
   }
 

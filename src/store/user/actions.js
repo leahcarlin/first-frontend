@@ -12,6 +12,7 @@ export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const TOKEN_STILL_VALID = "TOKEN_STILL_VALID";
 export const LOG_OUT = "LOG_OUT";
 export const GIF_GET_SUCCESS = "GIF_GET_SUCCESS";
+export const GIF_RESET = "GIF_RESET";
 
 const loginSuccess = (userWithToken) => {
   return {
@@ -28,6 +29,10 @@ const tokenStillValid = (userWithoutToken) => ({
 const gifGetSuccess = (gif) => ({
   type: GIF_GET_SUCCESS,
   payload: gif,
+});
+
+export const gifReset = () => ({
+  type: GIF_RESET,
 });
 
 export const logOut = () => ({ type: LOG_OUT });
