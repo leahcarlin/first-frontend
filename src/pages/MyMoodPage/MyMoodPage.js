@@ -1,16 +1,17 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Mood from "../components/Mood";
+import Mood from "../../components/Mood";
+import "./MyMoodPage.css";
 
 import {
   loadEntries,
   deleteEntry,
   deleteAllEntries,
-} from "../store/entries/actions";
+} from "../../store/entries/actions";
 import {
   selectEntriesLoading,
   selectEntries,
-} from "../store/entries/selectors";
+} from "../../store/entries/selectors";
 
 export default function MyMoodPage() {
   const dispatch = useDispatch();
@@ -33,23 +34,29 @@ export default function MyMoodPage() {
   };
 
   return (
-    <div>
-      <h1>Moods</h1>
+    <div className="container">
+      <h1>My Mood History</h1>
       {loading ? (
         <em>Loading...</em>
       ) : (
-        <div>
+        <div className="card-container">
           {listOfEntries.map((entry) => (
-            <div key={entry.id}>
+            <div className="mood-card" key={entry.id}>
               <Mood mood={entry} />
-              <button onClick={() => onDelete(entry.id)}>
-                Delete the mood
+              <button className="button-32" onClick={() => onDelete(entry.id)}>
+                Delete this mood
               </button>
             </div>
           ))}
-          <button onClick={() => onDeleteAll()}>Delete all</button>
         </div>
       )}
+      {listOfEntries ? (
+        <div style={{ marginTop: "30px" }}>
+          <button className="button-33" onClick={onDeleteAll}>
+            Delete All
+          </button>
+        </div>
+      ) : null}
     </div>
   );
 }
