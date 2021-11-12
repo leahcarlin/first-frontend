@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { saveEntry } from "../../store/entries/actions";
 import { gifRender } from "../../store/user/actions";
 import { selectGif, selectToken } from "../../store/user/selectors";
+import "./Homepage.css";
 
 export default function Homepage() {
   const [sentiment, setSentiment] = useState("-");
@@ -95,7 +96,7 @@ export default function Homepage() {
           </select>
         </Col>
       </Row>
-      <Form as={Col} md={{ span: 6, offset: 3 }} className="mt-5">
+      <Form as={Col} className="mt-5" style={{ width: "600px" }}>
         <Form.Group controlId="formBasicContent">
           {token ? (
             <Form.Control
@@ -103,7 +104,6 @@ export default function Homepage() {
               onChange={(event) => setContent(event.target.value)}
               type="input"
               placeholder="Why do you feel this way?"
-              required
             />
           ) : null}
         </Form.Group>
@@ -116,6 +116,7 @@ export default function Homepage() {
               variant="primary"
               type="submit"
               onClick={() => handleSave(content, showGif)}
+              style={{ marginLeft: "20px" }}
             >
               Save the GIF!
             </Button>
