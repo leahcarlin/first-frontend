@@ -5,6 +5,18 @@ import { saveEntry } from "../../store/entries/actions";
 import { gifRender, gifReset } from "../../store/user/actions";
 import { selectGif, selectToken } from "../../store/user/selectors";
 import "./Homepage.css";
+import {
+  FacebookIcon,
+  FacebookShareButton,
+  TwitterIcon,
+  TwitterShareButton,
+  WhatsappShareButton,
+  WhatsappIcon,
+  FacebookMessengerShareButton,
+  FacebookMessengerIcon,
+  EmailShareButton,
+  EmailIcon,
+} from "react-share";
 
 export default function Homepage() {
   const [sentiment, setSentiment] = useState("-");
@@ -129,13 +141,43 @@ export default function Homepage() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
+          marginBottom: "20px",
         }}
       >
         {!showGif ? null : (
-          <Image
-            src={showGif}
-            style={{ margin: "20px", width: "600px", objectFit: "cover" }}
-          />
+          <div>
+            <Image
+              src={showGif}
+              style={{
+                marginTop: "20px",
+                width: "600px",
+                objectFit: "cover",
+              }}
+            />
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                marginTop: "5px",
+              }}
+            >
+              <FacebookShareButton url={showGif}>
+                <FacebookIcon size={35} round={true} />
+              </FacebookShareButton>
+              <FacebookMessengerShareButton url={showGif}>
+                <FacebookMessengerIcon size={35} round={true} />
+              </FacebookMessengerShareButton>
+              <TwitterShareButton url={showGif}>
+                <TwitterIcon size={35} round={true} />
+              </TwitterShareButton>
+              <WhatsappShareButton url={showGif}>
+                <WhatsappIcon size={35} round={true} />
+              </WhatsappShareButton>
+              <EmailShareButton url={showGif}>
+                <EmailIcon size={35} round={true} />
+              </EmailShareButton>
+            </div>
+          </div>
         )}
       </Row>
     </Container>
