@@ -1,5 +1,5 @@
 import axios from "axios";
-import { selectToken } from "../user/selectors";
+import { selectUser } from "../user/selectors";
 import {
   appLoading,
   appDoneLoading,
@@ -52,7 +52,7 @@ const entriesFetched = (entries) => {
 export const loadEntries = () => {
   return async (dispatch, getState) => {
     dispatch(startLoading());
-    const token = selectToken(getState());
+    const token = selectUser(getState());
 
     if (token === null) return;
 
@@ -68,7 +68,7 @@ export const loadEntries = () => {
 
 export const saveEntry = (content, gifUrl) => {
   return async (dispatch, getState) => {
-    const token = selectToken(getState());
+    const token = selectUser(getState());
     if (token === null) return;
     dispatch(appLoading());
     try {
@@ -100,7 +100,7 @@ export const saveEntry = (content, gifUrl) => {
 
 export const deleteEntry = (entryId) => {
   return async (dispatch, getState) => {
-    const token = selectToken(getState());
+    const token = selectUser(getState());
 
     if (token === null) return;
 
@@ -130,7 +130,7 @@ export const deleteEntry = (entryId) => {
 
 export const deleteAllEntries = () => {
   return async (dispatch, getState) => {
-    const token = selectToken(getState());
+    const token = selectUser(getState());
 
     if (token === null) return;
 
