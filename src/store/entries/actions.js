@@ -105,7 +105,7 @@ export const deleteEntry = (entryId) => {
 
     dispatch(appLoading());
     try {
-      const response = await axios.delete(`${apiUrl}/${entryId}`, {
+      const response = await axios.delete(`${apiUrl}/entry/${entryId}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
