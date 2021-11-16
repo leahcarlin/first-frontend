@@ -13,7 +13,7 @@ const initialState = {
   gif: null,
 };
 
-export default (state = initialState, action) => {
+export default function reducer(state = initialState, action) {
   switch (action.type) {
     case LOGIN_SUCCESS:
       localStorage.setItem("token", action.payload.token);
@@ -38,4 +38,4 @@ export default (state = initialState, action) => {
     default:
       return state;
   }
-};
+}

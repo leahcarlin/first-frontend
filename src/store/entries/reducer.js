@@ -10,7 +10,7 @@ const initialState = {
   entries: [],
 };
 
-export default function entriesSliceReducer(state = initialState, action) {
+export default function reducer(state = initialState, action) {
   switch (action.type) {
     case START_LOADING: {
       return {
