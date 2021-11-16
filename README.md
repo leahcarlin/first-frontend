@@ -59,6 +59,6 @@ Go to [MockFlow](https://wireframepro.mockflow.com/view/Mq6YcBfiXmb) to see the 
 
 ## Repositories
 
-[Click](https://github.com/leahcarlin/first-frontend) to see the front-end repo
+[Click](https://github.com/leahcarlin/give-me-the-gif-frontend) to see the front-end repo
 
-[Click](https://github.com/leahcarlin/first-backend) to see the back-end repo
+[Click](https://github.com/leahcarlin/give-me-the-gif-backend) to see the back-end repo
