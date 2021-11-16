@@ -1,7 +1,6 @@
 # 😜 Give me the GIF
 
-See the deployed version [here](https://give-me-the-gif.netlify.app){:target="_blank" rel="noopener"}
-
+See the deployed version [here](https://give-me-the-gif.netlify.app)
 ## Description
 
 For my group-project during my full-stack javascript bootcamp, my group was given the theme of entertainment. We built a web application for developers to track their mood and generate GIF related to their mood. Login users can also write a short journal entry about how they are feeling and why and then choose to save it. Users can view a history of their moods along with their entries and GIFs.
