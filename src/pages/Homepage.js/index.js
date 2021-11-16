@@ -35,7 +35,7 @@ export default function Homepage() {
     }
   }
 
-  function handleSave(gifUrl) {
+  function handleSave(content, gifUrl) {
     if (content === " ") alert("Please share your feelings");
     else {
       dispatch(saveEntry(content, gifUrl));
