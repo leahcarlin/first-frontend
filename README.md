@@ -1,6 +1,6 @@
 # 😜 Give me the GIF
 
-<!-- See the deployed version here -->
+See the deployed version [here](https://give-me-the-gif.netlify.app)
 
 ## Description
 
