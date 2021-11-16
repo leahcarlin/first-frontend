@@ -53,12 +53,12 @@ export const loadEntries = () => {
   return async (dispatch, getState) => {
     dispatch(startLoading());
     const { token } = selectUser(getState());
-
     if (token === null) return;
 
-    const res = await axios.get(`${apiUrl}`, {
+    const res = await axios.get(`${apiUrl}/entry`, {
       headers: { Authorization: `Bearer ${token}` },
     });
+    console.log("res in load entries?", res.data);
 
     const loadedEntries = res.data.entries;
 
@@ -72,9 +72,8 @@ export const saveEntry = (content, gifUrl) => {
     if (token === null) return;
     dispatch(appLoading());
     try {
-      // console.log("anything we have here?", content, gifUrl, userId);
       const res = await axios.post(
-        `${apiUrl}`,
+        `${apiUrl}/entry`,
         { content, gifUrl },
         {
           headers: { Authorization: `Bearer ${token}` },
