@@ -5,23 +5,34 @@ import {
   appLoading,
   appDoneLoading,
   showMessageWithTimeout,
-  setMessage
+  setMessage,
 } from "../appState/actions";
 
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const TOKEN_STILL_VALID = "TOKEN_STILL_VALID";
 export const LOG_OUT = "LOG_OUT";
+export const GIF_GET_SUCCESS = "GIF_GET_SUCCESS";
+export const GIF_RESET = "GIF_RESET";
 
-const loginSuccess = userWithToken => {
+const loginSuccess = (userWithToken) => {
   return {
     type: LOGIN_SUCCESS,
-    payload: userWithToken
+    payload: userWithToken,
   };
 };
 
-const tokenStillValid = userWithoutToken => ({
+const tokenStillValid = (userWithoutToken) => ({
   type: TOKEN_STILL_VALID,
-  payload: userWithoutToken
+  payload: userWithoutToken,
+});
+
+const gifGetSuccess = (gif) => ({
+  type: GIF_GET_SUCCESS,
+  payload: gif,
+});
+
+export const gifReset = () => ({
+  type: GIF_RESET,
 });
 
 export const logOut = () => ({ type: LOG_OUT });
@@ -33,7 +44,7 @@ export const signUp = (name, email, password) => {
       const response = await axios.post(`${apiUrl}/signup`, {
         name,
         email,
-        password
+        password,
       });
 
       dispatch(loginSuccess(response.data));
@@ -58,7 +69,7 @@ export const login = (email, password) => {
     try {
       const response = await axios.post(`${apiUrl}/login`, {
         email,
-        password
+        password,
       });
 
       dispatch(loginSuccess(response.data));
@@ -90,7 +101,7 @@ export const getUserWithStoredToken = () => {
       // if we do have a token,
       // check wether it is still valid or if it is expired
       const response = await axios.get(`${apiUrl}/me`, {
-        headers: { Authorization: `Bearer ${token}` }
+        headers: { Authorization: `Bearer ${token}` },
       });
 
       // token is still valid
@@ -105,6 +116,29 @@ export const getUserWithStoredToken = () => {
       // if we get a 4xx or 5xx response,
       // get rid of the token by logging out
       dispatch(logOut());
+      dispatch(appDoneLoading());
+    }
+  };
+};
+
+export const gifRender = (sentiment) => {
+  return async (dispatch, getState) => {
+    dispatch(appLoading());
+    try {
+      const res = await axios.post(`${apiUrl}/entry/gif`, {
+        sentiment,
+      });
+
+      dispatch(gifGetSuccess(res.data));
+      dispatch(appDoneLoading());
+    } catch (error) {
+      if (error.response) {
+        console.log(error.response.data.message);
+        dispatch(setMessage("danger", true, error.response.data.message));
+      } else {
+        console.log(error.message);
+        dispatch(setMessage("danger", true, error.message));
+      }
       dispatch(appDoneLoading());
     }
   };

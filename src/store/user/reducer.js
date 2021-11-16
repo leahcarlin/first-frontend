@@ -1,9 +1,16 @@
-import { LOG_OUT, LOGIN_SUCCESS, TOKEN_STILL_VALID } from "./actions";
+import {
+  LOG_OUT,
+  LOGIN_SUCCESS,
+  TOKEN_STILL_VALID,
+  GIF_GET_SUCCESS,
+  GIF_RESET,
+} from "./actions";
 
 const initialState = {
   token: localStorage.getItem("token"),
   name: null,
-  email: null
+  email: null,
+  gif: null,
 };
 
 export default (state = initialState, action) => {
@@ -18,6 +25,15 @@ export default (state = initialState, action) => {
 
     case TOKEN_STILL_VALID:
       return { ...state, ...action.payload };
+
+    case GIF_GET_SUCCESS:
+      return { ...state, gif: action.payload };
+
+    case GIF_RESET:
+      return {
+        ...state,
+        gif: null,
+      };
 
     default:
       return state;
