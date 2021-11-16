@@ -6,8 +6,7 @@ import {
   showMessageWithTimeout,
   setMessage,
 } from "../appState/actions";
-
-const API_URL = `http://localhost:4000/entry`;
+import { apiUrl } from "../../config/constants";
 
 export const SAVE_ENTRY_SUCCESS = "SAVE_ENTRY_SUCCESS";
 export const DELETE_ENTRY_SUCCESS = "DELETE_ENTRY_SUCCESS";
@@ -57,7 +56,7 @@ export const loadEntries = () => {
 
     if (token === null) return;
 
-    const res = await axios.get(`${API_URL}`, {
+    const res = await axios.get(`${apiUrl}`, {
       headers: { Authorization: `Bearer ${token}` },
     });
 
@@ -75,7 +74,7 @@ export const saveEntry = (content, gifUrl, userId) => {
     try {
       // console.log("anything we have here?", content, gifUrl, userId);
       const res = await axios.post(
-        `${API_URL}`,
+        `${apiUrl}`,
         { content, gifUrl },
         {
           headers: { Authorization: `Bearer ${token}` },
@@ -107,7 +106,7 @@ export const deleteEntry = (entryId) => {
 
     dispatch(appLoading());
     try {
-      const response = await axios.delete(`${API_URL}/${entryId}`, {
+      const response = await axios.delete(`${apiUrl}/${entryId}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -137,7 +136,7 @@ export const deleteAllEntries = () => {
 
     dispatch(appLoading());
     try {
-      const response = await axios.delete(`${API_URL}`, {
+      const response = await axios.delete(`${apiUrl}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
