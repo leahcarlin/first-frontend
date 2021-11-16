@@ -35,10 +35,10 @@ export default function Homepage() {
     }
   }
 
-  function handleSave(content, gifUrl, userId) {
+  function handleSave(gifUrl) {
     if (content === " ") alert("Please share your feelings");
     else {
-      dispatch(saveEntry(content, gifUrl, userId));
+      dispatch(saveEntry(content, gifUrl));
       dispatch(gifReset());
     }
   }

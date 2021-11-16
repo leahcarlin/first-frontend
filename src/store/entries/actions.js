@@ -66,7 +66,7 @@ export const loadEntries = () => {
   };
 };
 
-export const saveEntry = (content, gifUrl, userId) => {
+export const saveEntry = (content, gifUrl) => {
   return async (dispatch, getState) => {
     const token = selectToken(getState());
     if (token === null) return;
