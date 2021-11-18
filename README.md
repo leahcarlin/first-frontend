@@ -9,14 +9,15 @@ We started with brainstorming and creating a database diagram, wireframes, and u
 
 ## Table of Contents
 
-<!-- - App Demo -->
-
+- App Demo
 - Technology Used
 - Goals for this Project
 - User Stories and Wireframe
 - Repositories
 
-<!-- ## App Demo -->
+## App Demo
+![App Demo]("../assets/GMTG_demo.png")
+![App Demo]("../assets/GMTG_demo2.png")
 
 ## Technology Used
 
