@@ -16,8 +16,8 @@ We started with brainstorming and creating a database diagram, wireframes, and u
 - Repositories
 
 ## App Demo
-![App Demo](./assets/GMTG_demo.png)
-![App Demo](./assets/GMTG_demo2.png)
+![App Demo](./assets/GMTG_demo.png){ width: 500px; }
+![App Demo](./assets/GMTG_demo2.png){ width: 500px; }
 
 ## Technology Used
 
